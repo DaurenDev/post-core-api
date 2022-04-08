@@ -3,6 +3,7 @@ package dar.backend.postcoreapi.controller;
 import dar.backend.postcoreapi.model.PostModel;
 import dar.backend.postcoreapi.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,16 @@ import java.util.List;
 @RequestMapping("/post")
 
 public class PostController {
+    @Autowired
+    Environment environment;
 
     @Autowired
     private PostService postService;
+
+    @GetMapping("/check")
+    public String check(){
+        return "post-core-api is working " + environment.getProperty("local.server.port");
+    }
 
     @PostMapping
     public ResponseEntity<String> createEmployee(@Valid @RequestBody PostModel postModel) {
