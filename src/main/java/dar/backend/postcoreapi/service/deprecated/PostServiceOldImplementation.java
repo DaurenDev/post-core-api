@@ -1,4 +1,4 @@
-package dar.backend.postcoreapi.service;
+package dar.backend.postcoreapi.service.deprecated;
 
 import dar.backend.postcoreapi.model.PostModel;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class PostServiceImplementation implements PostService{
+public class PostServiceOldImplementation implements PostServiceOld {
     private static final HashMap<String, PostModel> modelMap  = new HashMap<>();
 
     static {

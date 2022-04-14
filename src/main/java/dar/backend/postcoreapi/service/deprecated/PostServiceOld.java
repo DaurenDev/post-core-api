@@ -1,11 +1,11 @@
-package dar.backend.postcoreapi.service;
+package dar.backend.postcoreapi.service.deprecated;
 
 import dar.backend.postcoreapi.model.PostModel;
 
 import java.util.List;
 
 
-public interface PostService {
+public interface PostServiceOld {
     void createPost(PostModel postModel);
 
     List<PostModel> getAllPosts();

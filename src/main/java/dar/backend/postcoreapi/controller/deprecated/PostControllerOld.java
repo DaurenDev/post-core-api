@@ -1,7 +1,7 @@
-package dar.backend.postcoreapi.controller;
+package dar.backend.postcoreapi.controller.deprecated;
 
 import dar.backend.postcoreapi.model.PostModel;
-import dar.backend.postcoreapi.service.PostService;
+import dar.backend.postcoreapi.service.deprecated.PostServiceOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -14,12 +14,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/post")
 
-public class PostController {
+public class PostControllerOld {
     @Autowired
     Environment environment;
 
     @Autowired
-    private PostService postService;
+    private PostServiceOld postServiceOld;
 
     @GetMapping("/check")
     public String check(){
@@ -28,30 +28,30 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<String> createEmployee(@Valid @RequestBody PostModel postModel) {
-        postService.createPost(postModel);
+        postServiceOld.createPost(postModel);
         return new ResponseEntity<>("Successfully created", HttpStatus.OK);
     }
 
     @GetMapping("/all")
     public List<PostModel> getAllEmployees() {
-        return postService.getAllPosts();
+        return postServiceOld.getAllPosts();
     }
 
     @GetMapping("/{postId}")
     public PostModel getEmployeeById(@PathVariable String postId) {
-        return postService.getPostById(postId);
+        return postServiceOld.getPostById(postId);
     }
 
     @PutMapping("/{postId}")
     public ResponseEntity<String> updateEmployeeById(@PathVariable String postId,
                                                      @Valid @RequestBody PostModel postModel) {
-        postService.updatePostById(postId, postModel);
+        postServiceOld.updatePostById(postId, postModel);
         return new ResponseEntity<>("Successfully updated", HttpStatus.OK);
     }
 
     @DeleteMapping("/{postId}")
     public ResponseEntity<String> deleteEmployeeById(@PathVariable String postId) {
-        postService.deletePostById(postId);
+        postServiceOld.deletePostById(postId);
         return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
     }
 }
