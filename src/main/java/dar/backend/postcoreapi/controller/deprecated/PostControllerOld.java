@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/post-deprecated")
 
 public class PostControllerOld {
     @Autowired

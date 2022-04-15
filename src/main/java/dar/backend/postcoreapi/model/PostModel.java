@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostModel {
-    @NotNull(message = "Name field must be filled")
     private String postId;
 
     @NotNull(message = "ClientID must be filled")
